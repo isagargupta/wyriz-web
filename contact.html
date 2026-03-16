@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Complaints | Wyriz Technology</title>
+    <meta name="description" content="Reach out to Wyriz Technology — submit a query, complaint, or data request.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="./styles/main.css?v=3">
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- Custom Magnetic Cursor Elements -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <header class="fixed w-full top-0 z-50 glass-header scrolled">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-outfit font-bold tracking-tight z-50">WYRIZ<span class="text-gray-500">.</span></a>
+            <nav class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+                <a href="index.html#philosophy" class="nav-link">Philosophy</a>
+                <a href="index.html#services" class="nav-link">Capabilities</a>
+                <a href="index.html#process" class="nav-link">Journey</a>
+            </nav>
+            <div class="hidden md:flex items-center gap-3">
+                <button class="header-voice-btn btn-magnetic header-riz-btn-ext" aria-label="Talk to Riz, our AI assistant" onclick="window.location.href='index.html#talk-to-riz'">
+                    <span class="header-voice-icon">
+                        <span class="voice-wave">
+                            <span class="voice-wave-bar"></span>
+                            <span class="voice-wave-bar"></span>
+                            <span class="voice-wave-bar"></span>
+                            <span class="voice-wave-bar"></span>
+                            <span class="voice-wave-bar"></span>
+                        </span>
+                    </span>
+                    <span class="header-voice-label">Talk to Riz</span>
+                    <span class="header-voice-pulse"></span>
+                </button>
+                <a href="index.html" class="btn-primary btn-magnetic">Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h1 class="text-4xl md:text-5xl font-outfit font-medium mb-4 tracking-tight">Contact & Complaints</h1>
+            <p class="text-gray-400 text-lg font-light mb-16 max-w-2xl">Have a question, concern, or complaint? We take every inquiry seriously. Use the form below and our team will respond within 2 business days.</p>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div>
+                    <form id="contact-form" class="contact-form" onsubmit="return handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="full-name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="full-name" name="full_name" required placeholder="Your full name" autocomplete="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="you@company.com" autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company / Organization</label>
+                            <input type="text" id="company" name="company" placeholder="Your company name" autocomplete="organization">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country <span class="required">*</span></label>
+                            <select id="country" name="country" required>
+                                <option value="" disabled selected>Select your country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                                <option value="SG">Singapore</option>
+                                <option value="NZ">New Zealand</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inquiry-type">Type of Inquiry <span class="required">*</span></label>
+                            <select id="inquiry-type" name="inquiry_type" required>
+                                <option value="" disabled selected>Select inquiry type</option>
+                                <option value="general">General Query</option>
+                                <option value="service">Service Inquiry</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="data-request">Data Access / Deletion Request</option>
+                                <option value="privacy">Privacy Concern</option>
+                                <option value="billing">Billing Inquiry</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject <span class="required">*</span></label>
+                            <input type="text" id="subject" name="subject" required placeholder="Brief subject of your inquiry">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" required rows="6" placeholder="Please describe your inquiry, complaint, or request in detail. Include any relevant reference numbers, dates, or specifics that will help us assist you faster."></textarea>
+                        </div>
+
+                        <div class="form-group form-checkbox">
+                            <input type="checkbox" id="privacy-consent" name="privacy_consent" required>
+                            <label for="privacy-consent">I have read and agree to the <a href="privacy-policy.html" class="text-white hover:underline">Privacy Policy</a>. I consent to Wyriz Technology processing my data to respond to this inquiry. <span class="required">*</span></label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-magnetic w-full" id="submit-btn">
+                            Submit Inquiry
+                        </button>
+
+                        <div id="form-success" class="form-success" style="display: none;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            <div>
+                                <p class="text-white font-medium">Inquiry Submitted Successfully</p>
+                                <p class="text-gray-400 text-sm">We will respond within 2 business days. A confirmation has been noted. Reference: <span id="ref-number"></span></p>
+                            </div>
+                        </div>
+
+                        <div id="form-error" class="form-error" style="display: none;">
+                            <p class="text-red-400">Something went wrong. Please try again or email us directly at <a href="mailto:hello@wyriz.dev" class="text-white hover:underline">hello@wyriz.dev</a>.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Info Sidebar -->
+                <div class="contact-sidebar">
+                    <div class="contact-info-card">
+                        <h3 class="text-xl font-outfit mb-6">Direct Contact</h3>
+                        <div class="contact-info-item">
+                            <span class="contact-info-label">All Inquiries, Complaints & Data Requests</span>
+                            <a href="mailto:hello@wyriz.dev" class="contact-info-value">hello@wyriz.dev</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-info-label">Partnership</span>
+                            <a href="mailto:sagar@wyriz.dev" class="contact-info-value">sagar@wyriz.dev</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3 class="text-xl font-outfit mb-6">Response Times</h3>
+                        <div class="contact-info-item">
+                            <span class="contact-info-label">General Queries</span>
+                            <span class="contact-info-value">Within 2 business days</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-info-label">Complaints</span>
+                            <span class="contact-info-value">Acknowledged within 24 hours</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-info-label">Data Requests (GDPR/CCPA/PDPA)</span>
+                            <span class="contact-info-value">Within 30 days</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <span class="contact-info-label">Urgent / Security</span>
+                            <span class="contact-info-value">Within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3 class="text-xl font-outfit mb-6">Regulatory Bodies</h3>
+                        <p class="text-gray-400 text-sm mb-4">If you are unsatisfied with our response, you may escalate your complaint to the relevant data protection authority in your jurisdiction:</p>
+                        <ul class="regulatory-list">
+                            <li><strong>USA:</strong> Federal Trade Commission (FTC) or your State Attorney General</li>
+                            <li><strong>Canada:</strong> Office of the Privacy Commissioner of Canada (OPC)</li>
+                            <li><strong>UK:</strong> Information Commissioner's Office (ICO)</li>
+                            <li><strong>Australia:</strong> Office of the Australian Information Commissioner (OAIC)</li>
+                            <li><strong>Singapore:</strong> Personal Data Protection Commission (PDPC)</li>
+                            <li><strong>New Zealand:</strong> Office of the Privacy Commissioner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-16 border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div>
+                    <a href="index.html" class="text-2xl font-outfit font-bold tracking-tight">WYRIZ<span class="text-gray-500">.</span></a>
+                    <p class="text-gray-500 mt-2 text-sm font-light">Business Intelligence. Revenue Architecture.</p>
+                </div>
+                <div class="text-gray-500 text-sm flex gap-6">
+                    <a href="mailto:hello@wyriz.dev" class="hover:text-white transition-colors">hello@wyriz.dev</a>
+                    <a href="https://wyriz.dev" class="hover:text-white transition-colors">wyriz.dev</a>
+                </div>
+            </div>
+            <div class="footer-legal-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="contact.html">Contact & Complaints</a>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between text-xs text-gray-600">
+                <p>&copy; 2026 Wyriz Technology. All rights reserved.</p>
+                <p>Confidentiality is sacred. Your data is protected.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/app.js"></script>
+    <script>
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('form-success');
+        const errorMsg = document.getElementById('form-error');
+        const refNumber = document.getElementById('ref-number');
+
+        // Basic validation
+        const requiredFields = form.querySelectorAll('[required]');
+        let valid = true;
+        requiredFields.forEach(field => {
+            if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+                field.classList.add('field-error');
+                valid = false;
+            } else {
+                field.classList.remove('field-error');
+            }
+        });
+
+        if (!valid) return false;
+
+        // Disable button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        // Generate reference number
+        const ref = 'WYR-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => { data[key] = value; });
+        data.reference = ref;
+        data.submitted_at = new Date().toISOString();
+
+        // For now, construct a mailto fallback since there's no backend
+        const mailBody = encodeURIComponent(
+            'Reference: ' + ref + '\n' +
+            'Name: ' + data.full_name + '\n' +
+            'Email: ' + data.email + '\n' +
+            'Phone: ' + (data.phone || 'N/A') + '\n' +
+            'Company: ' + (data.company || 'N/A') + '\n' +
+            'Country: ' + data.country + '\n' +
+            'Type: ' + data.inquiry_type + '\n' +
+            'Subject: ' + data.subject + '\n\n' +
+            'Message:\n' + data.message
+        );
+
+        // Open mailto as fallback submission
+        const mailLink = document.createElement('a');
+        mailLink.href = 'mailto:hello@wyriz.dev?subject=' + encodeURIComponent('[' + data.inquiry_type.toUpperCase() + '] ' + data.subject + ' (Ref: ' + ref + ')') + '&body=' + mailBody;
+        mailLink.click();
+
+        // Show success
+        refNumber.textContent = ref;
+        successMsg.style.display = 'flex';
+        errorMsg.style.display = 'none';
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Inquiry';
+
+        // Scroll to success message
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        return false;
+    }
+
+    // Remove error styling on input
+    document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea').forEach(field => {
+        field.addEventListener('input', () => field.classList.remove('field-error'));
+        field.addEventListener('change', () => field.classList.remove('field-error'));
+    });
+    </script>
+
+</body>
+</html>
