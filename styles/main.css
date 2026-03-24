@@ -1337,3 +1337,238 @@ a.contact-info-value:hover {
 .hover\:text-white:hover { color: #fff; }
 .hover\:underline:hover { text-decoration: underline; }
 .tracking-wide { letter-spacing: 0.025em; }
+
+/* ─── Hero Grid Layout ─── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+}
+.hero-content { position: relative; z-index: 2; }
+
+/* ─── Hero Sci-Fi Animation ─── */
+.hero-anim {
+  display: none;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .hero-anim { display: block; }
+}
+.hero-anim-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* SVG underlay lines */
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Orbital Rings ── */
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.06);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.orbit-1 {
+  width: 48%; height: 48%;
+  animation: orbitSpin 25s linear infinite;
+  border-style: dashed;
+  border-color: rgba(255,255,255,0.05);
+}
+.orbit-2 {
+  width: 72%; height: 72%;
+  animation: orbitSpinReverse 35s linear infinite;
+  border-style: dotted;
+  border-color: rgba(255,255,255,0.04);
+}
+.orbit-3 {
+  width: 92%; height: 92%;
+  animation: orbitSpin 50s linear infinite;
+  border-color: rgba(255,255,255,0.03);
+}
+
+@keyframes orbitSpin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+@keyframes orbitSpinReverse {
+  from { transform: translate(-50%,-50%) rotate(360deg); }
+  to   { transform: translate(-50%,-50%) rotate(0deg); }
+}
+
+/* ── Orbiting Dots ── */
+.orbit-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  top: 50%; left: 50%;
+  box-shadow: 0 0 8px rgba(255,255,255,0.15);
+}
+.orbit-dot-1 {
+  animation: dotOrbit1 18s linear infinite;
+}
+.orbit-dot-2 {
+  width: 4px; height: 4px;
+  background: rgba(255,255,255,0.25);
+  animation: dotOrbit2 24s linear infinite;
+}
+.orbit-dot-3 {
+  width: 3px; height: 3px;
+  background: rgba(255,255,255,0.2);
+  animation: dotOrbit3 32s linear infinite;
+}
+.orbit-dot-4 {
+  width: 5px; height: 5px;
+  background: rgba(255,255,255,0.15);
+  animation: dotOrbit4 14s linear infinite;
+}
+
+@keyframes dotOrbit1 {
+  from { transform: translate(-50%,-50%) rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+@keyframes dotOrbit2 {
+  from { transform: translate(-50%,-50%) rotate(0deg) translateX(185px) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(-360deg) translateX(185px) rotate(360deg); }
+}
+@keyframes dotOrbit3 {
+  from { transform: translate(-50%,-50%) rotate(90deg) translateX(230px) rotate(-90deg); }
+  to   { transform: translate(-50%,-50%) rotate(450deg) translateX(230px) rotate(-450deg); }
+}
+@keyframes dotOrbit4 {
+  from { transform: translate(-50%,-50%) rotate(200deg) translateX(100px) rotate(-200deg); }
+  to   { transform: translate(-50%,-50%) rotate(560deg) translateX(100px) rotate(-560deg); }
+}
+
+/* ── Pulsing Core ── */
+.hero-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 16px; height: 16px;
+}
+.hero-core-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+.hero-core-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  animation: corePulse 3s ease-in-out infinite;
+}
+.hero-core-ring-2 {
+  inset: -28px;
+  border-color: rgba(255,255,255,0.08);
+  animation-delay: 1s;
+  animation-duration: 4s;
+}
+@keyframes corePulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.4); opacity: 0.15; }
+}
+
+/* ── Floating Geometric Shapes ── */
+.geo-shape {
+  position: absolute;
+  opacity: 0.12;
+}
+
+/* Hexagon shapes using clip-path */
+.geo-hex {
+  width: 30px; height: 30px;
+  background: rgba(255,255,255,0.2);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.geo-hex-1 {
+  top: 14%; right: 8%;
+  animation: geoFloat1 12s ease-in-out infinite, geoRotate 20s linear infinite;
+}
+.geo-hex-2 {
+  bottom: 20%; left: 6%;
+  width: 22px; height: 22px;
+  animation: geoFloat2 15s ease-in-out infinite, geoRotateReverse 25s linear infinite;
+}
+
+/* Diamond shape */
+.geo-diamond {
+  width: 18px; height: 18px;
+  background: rgba(255,255,255,0.15);
+  transform: rotate(45deg);
+}
+.geo-diamond-1 {
+  top: 28%; left: 12%;
+  animation: geoFloat3 10s ease-in-out infinite;
+}
+
+/* Small circles */
+.geo-circle {
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.geo-circle-1 {
+  width: 40px; height: 40px;
+  bottom: 12%; right: 15%;
+  animation: geoFloat1 14s ease-in-out infinite;
+}
+.geo-circle-2 {
+  width: 20px; height: 20px;
+  top: 60%; right: 5%;
+  background: rgba(255,255,255,0.04);
+  animation: geoFloat2 9s ease-in-out infinite;
+}
+
+@keyframes geoFloat1 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33%      { transform: translateY(-18px) translateX(8px); }
+  66%      { transform: translateY(10px) translateX(-6px); }
+}
+@keyframes geoFloat2 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  40%      { transform: translateY(15px) translateX(-10px); }
+  70%      { transform: translateY(-12px) translateX(5px); }
+}
+@keyframes geoFloat3 {
+  0%, 100% { transform: translateY(0) rotate(45deg); }
+  50%      { transform: translateY(-20px) rotate(45deg); }
+}
+@keyframes geoRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes geoRotateReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .orbit-dot, .hero-core-ring, .geo-shape, .hero-lines circle, .hero-lines line {
+    animation: none !important;
+  }
+}
