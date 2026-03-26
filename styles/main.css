@@ -1572,3 +1572,150 @@ a.contact-info-value:hover {
     animation: none !important;
   }
 }
+
+/* ─── Hero Background Mesh ─── */
+.hero-mesh {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 10%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ─── Hero Local Glow ─── */
+.bg-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%);
+    top: 40%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    filter: blur(60px);
+    z-index: 0;
+}
+
+/* ─── Hero Heading Clip Reveal ─── */
+.hero-heading-clip {
+    overflow: hidden;
+}
+
+/* ─── Nav Link Hover Underline ─── */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.5);
+    transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ─── Trust Strip Marquee ─── */
+.trust-strip {
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.008);
+    padding: 0.9rem 0;
+    position: relative;
+}
+.trust-strip::before,
+.trust-strip::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+.trust-strip::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-bg), transparent);
+}
+.trust-strip::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-bg), transparent);
+}
+.trust-strip-track {
+    display: flex;
+    align-items: center;
+    animation: marqueeScroll 40s linear infinite;
+    width: max-content;
+}
+.trust-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+    flex-shrink: 0;
+}
+.trust-strip-item span {
+    font-size: 0.67rem;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+    white-space: nowrap;
+}
+.trust-strip-sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+}
+@keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .trust-strip-track { animation: none; }
+}
+
+/* ─── Service Card Icons ─── */
+.service-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+.service-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: rgba(255,255,255,0.38);
+    transition: stroke 0.3s ease;
+}
+.service-card:hover .service-icon {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.14);
+    box-shadow: 0 0 16px rgba(255,255,255,0.05);
+}
+.service-card:hover .service-icon svg {
+    stroke: rgba(255,255,255,0.8);
+}
+
+/* ─── Stat Counter ─── */
+.stat-counter {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}

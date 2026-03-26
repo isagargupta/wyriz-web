@@ -299,4 +299,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Card Spotlight Mouse Tracking ---
+    // Activates the radial gradient spotlight that follows the cursor on service/pricing cards
+    document.querySelectorAll('.service-card, .pricing-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+    });
+
+    // --- Stat Counter Animation ---
+    // Counts numbers up when the results section scrolls into view
+    const statCounters = document.querySelectorAll('.stat-counter');
+    if (statCounters.length > 0) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseInt(el.dataset.count, 10);
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                const duration = 1600;
+                const startTime = performance.now();
+
+                const tick = (now) => {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease-out cubic for natural deceleration
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(eased * target);
+                    el.textContent = prefix + current + suffix;
+                    if (progress < 1) requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+                counterObserver.unobserve(el);
+            });
+        }, { threshold: 0.7 });
+
+        statCounters.forEach(el => counterObserver.observe(el));
+    }
+
 });
